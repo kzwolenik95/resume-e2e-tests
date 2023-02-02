@@ -5,5 +5,5 @@
   "scripts": {
     "cy:verify": "cypress verify",
     "cy:info": "cypress info"
-  },
+  }
 }
