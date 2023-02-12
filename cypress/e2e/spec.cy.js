@@ -1,12 +1,12 @@
 describe('Test counter', () => {
   it('Visit resume and check if visit cookie is set!', () => {
-    cy.visit('https://dev.kzwolenik.com/resume/')
+    cy.visit('resume/')
     cy.contains(/This page has been visited \d+ times!/)
     cy.getCookie('visited')
       .should('have.property', 'value', 'true')
   })
   it('Visit resume and check if counter value is a number!', () => {
-    cy.visit('https://dev.kzwolenik.com/resume/')
+    cy.visit('resume/')
     cy.contains(/This page has been visited \d+ times!/)
     cy.getCookie('counter_value')
       .then((cookie) => {
@@ -14,7 +14,7 @@ describe('Test counter', () => {
     })
   })
   it('Visit resume and assert that counter value increased!', () => {
-    cy.visit('https://dev.kzwolenik.com/resume/')
+    cy.visit('resume/')
     cy.contains(/This page has been visited \d+ times!/)
     cy.getCookie('counter_value')
       .then((cookie) => {
@@ -30,7 +30,7 @@ describe('Test counter', () => {
   it('Assert increment and get call not made when cookie set!', () => {
     cy.setCookie('visited', 'true')
     cy.setCookie('counter_value', '25')
-    cy.visit('https://dev.kzwolenik.com/resume/')
+    cy.visit('resume/')
     cy.intercept('**/increment').as('myRequest')
     cy.wait(500);
     cy.get('@myRequest.all').then((interceptions) => {
